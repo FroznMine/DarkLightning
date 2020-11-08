@@ -7,3 +7,5 @@ import Foundation
 #endif
 
 @_exported import Port
+
+@_exported import protocol Utils.OOData
