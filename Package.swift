@@ -5,14 +5,16 @@ import PackageDescription
 
 let package = Package(
 	name: "DarkLightning",
+	platforms: [
+		.macOS(.v10_10),
+		.iOS(.v8),
+		.tvOS(.v9)
+	],
 	products: [
 		// Products define the executables and libraries a package produces, and make them visible to other packages.
 		.library(
-			name: "DarkLightningMac",
-			targets: ["Daemon"]),
-		.library(
-			name: "DarkLightningiOS",
-			targets: ["Port"]),
+			name: "DarkLightning",
+			targets: ["DarkLightning"]),
 	],
 	dependencies: [
 		// Dependencies declare other packages that this package depends on.
@@ -26,6 +28,9 @@ let package = Package(
 		.target(name: "Daemon",
 				dependencies: [.target(name: "Utils")]),
 		.target(name: "Port",
-				dependencies: [.target(name: "Utils"), .target(name: "Daemon")])
+				dependencies: [.target(name: "Utils")]),
+		.target(name: "DarkLightning",
+				dependencies: [.target(name: "Daemon", condition: .when(platforms: [.macOS])),
+							   .target(name: "Port")])
 	]
 )
