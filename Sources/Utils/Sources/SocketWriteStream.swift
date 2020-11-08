@@ -28,18 +28,18 @@
 
 import Foundation
 
-internal final class SocketWriteStream: WriteStream {
+public final class SocketWriteStream: WriteStream {
 	private let outputStream: Memory<OutputStream?>
 	
 	// MARK: Init
     
-    internal required init(outputStream: Memory<OutputStream?>) {
+	public required init(outputStream: Memory<OutputStream?>) {
         self.outputStream = outputStream
     }
     
     // MARK: WriteStream
 	
-	func write(data: Data) {
+	public func write(data: Data) {
 		if !data.isEmpty, let outputStream = outputStream.rawValue {
 			var bytesWritten = 0
 			repeat {

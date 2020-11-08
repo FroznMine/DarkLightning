@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class MemoryDevices: Devices {
     private let devices: Memory<[Int: Data]>

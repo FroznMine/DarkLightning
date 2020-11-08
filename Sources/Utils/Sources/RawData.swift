@@ -28,18 +28,18 @@
 
 import Foundation
 
-internal final class RawData: OOData {
+public final class RawData: OOData {
 	private let origin: Data
 	
 	// MARK: Init
     
-    internal required init(_ origin: Data) {
+	public required init(_ origin: Data) {
         self.origin = origin
     }
     
     // MARK: OOData
 	
-	internal var dataValue: Data {
+	public var dataValue: Data {
 		return origin
 	}
 }

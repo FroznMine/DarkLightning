@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class TCPMessage: DataDecoding {
     private let tcpMode: Memory<Bool>

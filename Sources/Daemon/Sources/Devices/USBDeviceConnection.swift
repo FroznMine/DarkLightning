@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class USBDeviceConnection: Device, CustomStringConvertible {
     private let dictionary: Memory<[Int: Data]>

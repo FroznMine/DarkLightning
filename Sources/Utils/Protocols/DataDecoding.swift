@@ -26,7 +26,7 @@
  *	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-internal protocol DataDecoding: class {
+public protocol DataDecoding: class {
 	func decode(data: OOData)
 }
 

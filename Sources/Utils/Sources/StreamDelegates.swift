@@ -28,7 +28,7 @@
 
 import Foundation
 
-internal final class StreamDelegates: NSObject, StreamDelegate {
+public final class StreamDelegates: NSObject, StreamDelegate {
 	private let delegates: [StreamDelegate]
 	
 	// MARK: Init
@@ -37,13 +37,13 @@ internal final class StreamDelegates: NSObject, StreamDelegate {
 		self.init(delegates: [])
 	}
 	
-	internal required init(delegates: [StreamDelegate]) {
+	public required init(delegates: [StreamDelegate]) {
         self.delegates = delegates
     }
     
     // MARK: StreamDelegate
 	
-	func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+	public func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
 		for delegate in delegates {
             if delegate.responds(to: #selector(StreamDelegate.stream(_:handle:))) {
                 delegate.stream!(aStream, handle: eventCode)

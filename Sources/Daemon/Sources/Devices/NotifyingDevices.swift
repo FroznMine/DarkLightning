@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class NotifyingDevices: Devices {
     private let origin: Devices

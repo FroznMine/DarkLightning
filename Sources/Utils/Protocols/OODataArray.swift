@@ -26,7 +26,7 @@
  *	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-internal protocol OODataArray: class {
+public protocol OODataArray: class {
 	var count: UInt {get}
 	subscript(index: UInt) -> OOData {get}
 }

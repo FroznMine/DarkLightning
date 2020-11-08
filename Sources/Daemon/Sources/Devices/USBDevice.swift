@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class USBDevice: DeviceWrap {
     private let deviceID: Int

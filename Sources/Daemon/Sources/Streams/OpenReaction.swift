@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class OpenReaction: NSObject, StreamDelegate {
 	private let state: Memory<Int>

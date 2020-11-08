@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class DisconnectReaction: NSObject, StreamDelegate {
 	private let handle: Memory<CFSocketNativeHandle>

@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 /**
  *
@@ -41,7 +42,7 @@ public protocol PortDelegate: class {
      * - parameter port: The port that has received the connection
      *
      */
-    func port(didConnect port: DarkLightning.Port)
+    func port(didConnect port: Port)
     
     /**
      *
@@ -50,7 +51,7 @@ public protocol PortDelegate: class {
      * - parameter port: The port that has cancelled the connection
      *
      */
-    func port(didDisconnect port: DarkLightning.Port)
+    func port(didDisconnect port: Port)
     
     /**
      *
@@ -59,7 +60,7 @@ public protocol PortDelegate: class {
      * - parameter port: The port that did receive data
      * - paramter data: The data that has been received
      */
-    func port(port: DarkLightning.Port, didReceiveData data: OOData)
+    func port(port: Port, didReceiveData data: OOData)
 }
 
 /**
@@ -68,7 +69,7 @@ public protocol PortDelegate: class {
  *
  */
 public final class PortDelegateFake: PortDelegate {
-    public var port: DarkLightning.Port?
+    public var port: Port?
     
 	// MARK: - Init
     
@@ -78,15 +79,17 @@ public final class PortDelegateFake: PortDelegate {
     
     // MARK: - PortDelegate
     
-    public func port(didConnect port: DarkLightning.Port) {
+    public func port(didConnect port: Port) {
         self.port = port
     }
     
-    public func port(didDisconnect port: DarkLightning.Port) {
+    public func port(didDisconnect port: Port) {
         self.port = port
     }
+
     
-    public func port(port: DarkLightning.Port, didReceiveData data: OOData) {
+    public func port(port: Port, didReceiveData data: OOData) {
         self.port = port
     }
 }
+

@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class CachedDevices: Devices {
     private let origin: Devices

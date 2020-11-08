@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal protocol BoolValue: class {
+public protocol BoolValue: class {
 	var boolValue: Bool {get set}
 }
 

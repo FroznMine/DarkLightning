@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class IncomingDataReaction: DataDecoding {
 	private let delegate: PortDelegate

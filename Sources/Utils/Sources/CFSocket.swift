@@ -28,7 +28,7 @@
 
 import Foundation
 
-let CFSocketInvalidHandle: Int32 = -1
+public let CFSocketInvalidHandle: Int32 = -1
 
 internal func CFSocketSetOption(socket: CFSocket, option: Int32, aValue: Int) {
 	var value = aValue
@@ -41,7 +41,7 @@ internal func CFSocketSetOption(socket: CFSocket, option: Int32, aValue: Int) {
 	)
 }
 
-internal func CFSocketConfigureAddress(socket: CFSocket, address: UInt32, port: UInt16) {
+public func CFSocketConfigureAddress(socket: CFSocket, address: UInt32, port: UInt16) {
 	var sin =  sockaddr_in(
 		sin_len: UInt8(MemoryLayout<sockaddr_in>.size),
 		sin_family: sa_family_t(AF_INET),
@@ -61,7 +61,7 @@ internal func CFSocketConfigureAddress(socket: CFSocket, address: UInt32, port: 
 	)
 }
 
-internal func CFSocketSetReuseFlags(socket: CFSocket) {
+public func CFSocketSetReuseFlags(socket: CFSocket) {
 	CFSocketSetOption(
 		socket: socket,
 		option: SO_REUSEADDR,

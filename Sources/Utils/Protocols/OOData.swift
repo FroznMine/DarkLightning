@@ -57,7 +57,7 @@ public final class OODataFake: OOData {
  * A decorating envelop that can be used to encapsulate a graph of objects that adopt the OOData protocol.
  *
  */
-public class OODataWrap: OOData {
+open class OODataWrap: OOData {
 	private let origin: OOData
 	
 	// MARK: Init

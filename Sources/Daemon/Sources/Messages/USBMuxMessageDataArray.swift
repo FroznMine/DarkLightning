@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class USBMuxMessageDataArray: OODataArray {
     private let data: Data

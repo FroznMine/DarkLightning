@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class SocketConnections: Connections {
 	private let queue: DispatchQueue

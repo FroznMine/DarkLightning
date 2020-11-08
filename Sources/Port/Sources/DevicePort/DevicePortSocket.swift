@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class DevicePortSocket: Port {
 	private let port: UInt16

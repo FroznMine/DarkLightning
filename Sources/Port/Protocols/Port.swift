@@ -27,13 +27,14 @@
  */
 
 import Foundation
+import Utils
 
 /**
  *
  * Represents a Port that can receive connections and send data.
  *
  */
-public protocol Port: Equatable {
+public protocol Port: Utils.Equatable {
     /**
      *
      * Tells the Port to allow incoming connections.

@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class DictData: OOData {
 	private let dict: [String: Any]

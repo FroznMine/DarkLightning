@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class ReceivingDataReaction: DataDecoding {
 	private let mapping: ([String: Any]) -> (USBMuxMessage)

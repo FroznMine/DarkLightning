@@ -8,20 +8,20 @@
 
 import Foundation
 
-internal final class DataWithRange: OOData {
+public final class DataWithRange: OOData {
 	private let data: Data
 	private let range: Range<Int>
 	
 	// MARK: Init
     
-    internal required init(data: Data, range: Range<Int>) {
+	public required init(data: Data, range: Range<Int>) {
         self.data = data
 		self.range = range
     }
     
     // MARK: OOData
 	
-	var dataValue: Data {
+	public var dataValue: Data {
 		return data.subdata(in: range)
 	}
 }

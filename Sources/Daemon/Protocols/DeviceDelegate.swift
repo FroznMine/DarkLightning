@@ -27,7 +27,7 @@
  */
 
 import Foundation
-
+import Utils
 /**
  *
  * The delegate of a Device object. Adopt this protocol to receive callbacks for device related events.

@@ -28,7 +28,7 @@
 
 import Foundation
 
-internal final class ReadStreamReaction: NSObject, StreamDelegate {
+public final class ReadStreamReaction: NSObject, StreamDelegate {
     
 	// MARK: Constants
 	
@@ -42,7 +42,7 @@ internal final class ReadStreamReaction: NSObject, StreamDelegate {
 	
 	// MARK: Init
 	
-	internal convenience init(delegate: DataDecoding) {
+	public convenience init(delegate: DataDecoding) {
 		self.init(
 			bufferSize: ReadStreamReaction.MaxBufferSize,
 			delegate: delegate
@@ -71,7 +71,7 @@ internal final class ReadStreamReaction: NSObject, StreamDelegate {
     
     // MARK: StreamDelegate
 	
-	func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+	public func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         if eventCode == .hasBytesAvailable {
 			var buffer = Data()
 			let inputStream = aStream as! InputStream

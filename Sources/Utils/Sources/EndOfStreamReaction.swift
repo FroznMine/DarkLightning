@@ -28,18 +28,18 @@
 
 import Foundation
 
-internal final class EndOfStreamReaction: NSObject, StreamDelegate {
+public final class EndOfStreamReaction: NSObject, StreamDelegate {
     private let origin: StreamDelegate
     
 	// MARK: Init
     
-    internal init(origin: StreamDelegate) {
+	public init(origin: StreamDelegate) {
         self.origin = origin
     }
     
     // MARK: StreamDelegate
     
-    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+    public func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         if eventCode == .endEncountered || eventCode == .errorOccurred {
             origin.stream!(aStream, handle: eventCode)
         }

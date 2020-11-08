@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Utils
 
 internal final class DataDecodings: DataDecoding {
 	private let decodings: [DataDecoding]

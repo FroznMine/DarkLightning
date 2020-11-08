@@ -28,6 +28,7 @@
 
 import Foundation
 import CoreFoundation
+import Utils
 
 public final class USBDaemon: DaemonWrap {
 	

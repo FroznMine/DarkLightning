@@ -27,6 +27,7 @@
  */
 
 import Foundation
+import Utils
 
 internal final class DataWithUInt32: OOData {
 	private let value: UInt32

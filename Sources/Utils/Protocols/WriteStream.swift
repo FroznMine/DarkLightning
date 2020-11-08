@@ -28,7 +28,7 @@
 
 import Foundation
 
-internal protocol WriteStream: class {
+public protocol WriteStream: class {
 	func write(data: Data)
 }
 

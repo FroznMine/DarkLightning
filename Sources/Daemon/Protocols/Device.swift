@@ -27,13 +27,13 @@
  */
 
 import Foundation
-
+import Utils
 /**
  *
  * Represents a Device with which you can connect and interact.
  *
  */
-public protocol Device: Equatable {
+public protocol Device: Utils.Equatable {
     
     /**
      *

@@ -28,7 +28,7 @@
 
 import Foundation
 
-internal final class SocketStream: DataStream {
+public final class SocketStream: DataStream {
 	private let readReaction: StreamDelegate
 	private let writeReaction: StreamDelegate
 	private let inputStream: Memory<InputStream?>
@@ -37,7 +37,7 @@ internal final class SocketStream: DataStream {
 	
 	// MARK: Init
 	
-    internal convenience init(handle: Memory<CFSocketNativeHandle>, inputStream: Memory<InputStream?>, outputStream: Memory<OutputStream?>) {
+    public convenience init(handle: Memory<CFSocketNativeHandle>, inputStream: Memory<InputStream?>, outputStream: Memory<OutputStream?>) {
         self.init(
             handle: handle,
             inputStream: inputStream,
@@ -47,7 +47,7 @@ internal final class SocketStream: DataStream {
         )
     }
     
-	internal required init(handle: Memory<CFSocketNativeHandle>, inputStream: Memory<InputStream?>, outputStream: Memory<OutputStream?>, readReaction: StreamDelegate, writeReaction: StreamDelegate) {
+	public required init(handle: Memory<CFSocketNativeHandle>, inputStream: Memory<InputStream?>, outputStream: Memory<OutputStream?>, readReaction: StreamDelegate, writeReaction: StreamDelegate) {
         self.handle = handle
 		self.inputStream = inputStream
 		self.outputStream = outputStream
@@ -57,7 +57,7 @@ internal final class SocketStream: DataStream {
     
     // MARK: DataStream
 	
-    func open(in queue: DispatchQueue) {
+   public func open(in queue: DispatchQueue) {
         var inputStream: Unmanaged<CFReadStream>? = nil
         var outputStream: Unmanaged<CFWriteStream>? = nil
         CFStreamCreatePairWithSocket(
@@ -95,7 +95,7 @@ internal final class SocketStream: DataStream {
         }
 	}
 	
-	func close() {
+	public func close() {
 		if inputStream.rawValue?.streamStatus != .closed {
 			inputStream.rawValue?.close()
             inputStream.rawValue = nil
