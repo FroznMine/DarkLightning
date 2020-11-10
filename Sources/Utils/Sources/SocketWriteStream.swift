@@ -42,12 +42,50 @@ public final class SocketWriteStream: WriteStream {
 	public func write(data: Data) {
 		if !data.isEmpty, let outputStream = outputStream.rawValue {
 			var bytesWritten = 0
-			repeat {
-				autoreleasepool {
+			do {
+				repeat {
 					let subData = data.dropFirst(bytesWritten)
-					bytesWritten += outputStream.write(subData, maxLength:subData.count)
-				}
-			} while(bytesWritten > 0 && bytesWritten != data.count && outputStream.streamError == nil)
+					try bytesWritten += outputStream.write(data: subData)
+				} while(bytesWritten != data.count)
+			} catch let error {
+				NSLog("Error occured while writing data to stream: \(error) [This is ignored]")
+			}
 		}
+	}
+}
+
+// Taken from https://developer.apple.com/forums/thread/116309
+// to safely write to a stream from Data
+extension OutputStream {
+
+	func write(buffer: UnsafeRawBufferPointer) throws -> Int {
+		// This check ensures that `baseAddress` will never be `nil`.
+		guard !buffer.isEmpty else { return 0 }
+		let bytesWritten = self.write(buffer.baseAddress!.assumingMemoryBound(to: UInt8.self), maxLength: buffer.count)
+		if bytesWritten < 0 {
+			throw self.guaranteedStreamError
+		}
+		return bytesWritten
+	}
+
+	func write(data: Data) throws -> Int {
+		return try data.withUnsafeBytes { buffer -> Int in
+			try self.write(buffer: buffer)
+		}
+	}
+}
+
+extension Stream {
+	var guaranteedStreamError: Error {
+		if let error = self.streamError {
+			return error
+		}
+		// If this fires, the stream read or write indicated an error but the
+		// stream didn’t record that error.  This is definitely a bug in the
+		// stream implementation, and we want to know about it in our Debug
+		// build. However, there’s no reason to crash the entire process in a
+		// Release build, so in that case we just return a dummy error.
+		assert(false)
+		return NSError(domain: NSPOSIXErrorDomain, code: Int(ENOTTY), userInfo: nil)
 	}
 }
