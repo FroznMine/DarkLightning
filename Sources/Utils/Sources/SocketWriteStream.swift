@@ -44,7 +44,7 @@ public final class SocketWriteStream: WriteStream {
 			var bytesWritten = 0
 			repeat {
 				autoreleasepool {
-					let subData = [UInt8](data.subdata(in: bytesWritten..<data.count-bytesWritten))
+					let subData = data.dropFirst(bytesWritten)
 					bytesWritten += outputStream.write(subData, maxLength:subData.count)
 				}
 			} while(bytesWritten > 0 && bytesWritten != data.count && outputStream.streamError == nil)
